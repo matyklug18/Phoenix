@@ -30,7 +30,7 @@
 
 using namespace phz::voxels;
 
-Inventory::add(Item item, int slot){
+bool Inventory::add(Item item, int slot){
     if(slot > m_size){return false;}
     if(m_items[slot] == NULL){ //Check if slot already has something in it
         //If not, add the item

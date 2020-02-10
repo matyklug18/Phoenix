@@ -30,6 +30,8 @@
 
 #include <Phoenix/Voxels/Item.hpp>
 
+#include <vector>
+
 namespace phx::voxels{
     class Inventory{
     public:

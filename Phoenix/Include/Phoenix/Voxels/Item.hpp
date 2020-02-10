@@ -29,9 +29,31 @@
 #pragma once
 
 #include <Phoenix/Registry.hpp>
+#include <string>
+#include <map>
 
+class Callback;
 namespace phx::voxels
 {
+    using Callback = std::function<void(math::vec3 pos)>;
+
+    struct ItemType{
+
+        ItemType(std::string name, std::string id);
+
+        std::string displayName;
+        std::string id;
+
+        int maxStack = 1;
+
+        Callback onAction;
+        Callback onUse;
+    };
+
+    class ItemRegistry: public Registry<ItemType><ItemRegistry>{
+        ItemRegistry();
+    };
+
     /**
      * @brief Metadata for items
      *
@@ -39,7 +61,6 @@ namespace phx::voxels
      */
     class MetaData{
         virtual std::string save();
-        virtual MetaData(std::string save);
     };
 
     struct Item{
@@ -49,21 +70,5 @@ namespace phx::voxels
 
         std::string save();
         Item(std::string save);
-    };
-
-    struct ItemType{
-        using Callback = std::function<void(math::vec3 pos)>;
-
-        ItemType(std::string name, std::string id);
-
-        std::string displayName;
-        std::string id;
-
-        Callback onAction;
-        Callback onUse;
-    };
-
-    class ItemRegistry: public Registery<ItemType><ItemRegistry>{
-        ItemRegistry();
     };
 }
