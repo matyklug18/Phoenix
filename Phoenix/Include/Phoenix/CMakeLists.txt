@@ -12,6 +12,7 @@ set(Headers
 
 	${currentDir}/EnumTools.hpp
 	${currentDir}/Singleton.hpp
+	${currentDir}/Registry.hpp
 	${currentDir}/FileIO.hpp
 
 	${currentDir}/ImGuiHelpers.hpp

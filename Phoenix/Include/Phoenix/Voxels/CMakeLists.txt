@@ -5,6 +5,8 @@ set(voxelHeaders
 	${currentDir}/TextureRegistry.hpp
 	${currentDir}/Chunk.hpp
 	${currentDir}/ChunkManager.hpp
+	${currentDir}/Item.hpp
+	${currentDir}/Inventory.hpp
 
 	PARENT_SCOPE
 )
