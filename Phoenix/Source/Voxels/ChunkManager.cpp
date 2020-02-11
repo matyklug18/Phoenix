@@ -47,16 +47,18 @@ ChunkManager::ChunkManager(int viewDistance) : m_viewDistance(viewDistance)
 
 ChunkManager::~ChunkManager() { delete m_renderer; }
 
-void ChunkManager::tick(math::vec3 playerPos)
+void ChunkManager::tick(PosPlayer playerPos)
 {
-	// this block converts the raw camera/player position into voxel-world
-	// positions.
-	playerPos = playerPos / 2.f;
-	playerPos += 0.5f;
+//	// this block converts the raw camera/player position into voxel-world
+//	// positions.
+//	playerPos = playerPos / 2.f;
+//	playerPos += 0.5f;
+    PosBlock block = playerPos;
 
-	const int posX = static_cast<int>(playerPos.x) / Chunk::CHUNK_WIDTH;
-	const int posY = static_cast<int>(playerPos.y) / Chunk::CHUNK_HEIGHT;
-	const int posZ = static_cast<int>(playerPos.z) / Chunk::CHUNK_DEPTH;
+//	const int posX = static_cast<int>(playerPos.x) / Chunk::CHUNK_WIDTH;
+//	const int posY = static_cast<int>(playerPos.y) / Chunk::CHUNK_HEIGHT;
+//	const int posZ = static_cast<int>(playerPos.z) / Chunk::CHUNK_DEPTH;
+    PosChunk chunk = playerPos;
 
 	// Get diameter to generate for.
 	const int chunkViewDistance = m_viewDistance;
@@ -67,12 +69,14 @@ void ChunkManager::tick(math::vec3 playerPos)
 		{
 			for (int z = -chunkViewDistance; z <= chunkViewDistance; z++)
 			{
-				math::vec3 chunkToCheck = {static_cast<float>(x + posX),
-				                           static_cast<float>(y + posY),
-				                           static_cast<float>(z + posZ)};
+//				math::vec3 chunkToCheck = {static_cast<float>(x + chunk.x),
+//				                           static_cast<float>(y + chunk.y),
+//				                           static_cast<float>(z + chunk.z)};
+//
+//				chunkToCheck =
+//				    chunkToCheck * static_cast<float>(Chunk::CHUNK_WIDTH);
 
-				chunkToCheck =
-				    chunkToCheck * static_cast<float>(Chunk::CHUNK_WIDTH);
+                PosBlock chunkToCheck = playerPos;
 
 				auto result =
 				    std::find_if(m_activeChunks.begin(), m_activeChunks.end(),

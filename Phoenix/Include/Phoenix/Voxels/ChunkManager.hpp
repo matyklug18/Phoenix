@@ -30,6 +30,7 @@
 
 #include <Phoenix/Graphics/ChunkRenderer.hpp>
 #include <Phoenix/Voxels/Chunk.hpp>
+#include <Phoenix/Cartesian.hpp>
 
 #include <vector>
 
@@ -89,7 +90,7 @@ namespace phx
 			 *
 			 * @todo Create classes to solve said issue, decide on whether to rely on explicit or implicit conversion of coordinate systems.
 			 */
-			void tick(math::vec3 playerPos);
+			void tick(PosPlayer playerPos);
 
 			/**
 			 * @brief Renders active chunks.
